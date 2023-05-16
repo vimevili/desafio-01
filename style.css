@@ -1,0 +1,217 @@
+/* configurações gerais */
+body {
+  background-color: #2e0249;
+  margin: 0 auto;
+  font: 400 1.25rem "Poppins", sans-serif;
+  max-width: 1440px;
+  height: 100vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  max-width: 13ch;
+}
+
+main {
+  background: white;
+  padding: 48px;
+  border-radius: 24px;
+  grid-template-columns: 1fr;
+}
+
+/* container */
+.container-1fr {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  align-content: space-between;
+}
+
+.container-2fr {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 64px;
+  gap: 48px;
+  max-width: 1440px;
+  height: 100vh;
+}
+
+.container-flex {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.flex-column {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 60px;
+}
+
+aside .container-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 0;
+  background-color: transparent;
+  transition: padding 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* configurações aside */
+.contact-list li:hover {
+  background: rgba(87, 10, 87, 0.5);
+  padding: 12px 24px;
+  border: 3px solid #a91079;
+  border-radius: 16px;
+}
+
+.contact-list {
+  gap: 48px;
+}
+
+.contact-list li {
+  gap: 16px;
+}
+
+#social-media {
+  gap: 44px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#social-media li {
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+#social-media li:hover::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  background: #a91079;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* tipografia e cores */
+.subtitle {
+  color: var(--cor-2);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.font-large {
+  font: 700 3rem "Poppins", sans-serif;
+}
+
+:root {
+  --cor-0: #ffffff;
+  --cor-1: #a91079;
+  --cor-2: #2e0249;
+}
+
+.cor-0 {
+  color: var(--cor-0);
+}
+
+.cor-1 {
+  color: var(--cor-1);
+}
+
+.cor-2 {
+  color: var(--cor-2);
+}
+
+/* componentes */
+
+.input-text {
+  padding: 8px;
+  background-color: var(--cor-0);
+  color: rgba(46, 2, 73, 0.3);
+  border: none;
+  border-bottom: solid rgba(46, 2, 73, 0.3);
+  margin: 0;
+}
+
+.input-text:focus {
+  color: var(--cor-2);
+  outline: none;
+  border-bottom: solid var(--cor-1);
+  caret-color: var(--cor-2);
+}
+
+.input-text::placeholder {
+  color: rgba(46, 2, 73, 0.3);
+  font: 400 1.25rem "Poppins", sans-serif;
+}
+
+.input-text:focus::placeholder {
+  color: var(--cor-2);
+  font-weight: 500;
+}
+
+.button-checkbox {
+  display: none;
+}
+
+#send-button {
+  padding: 24px;
+  color: var(--cor-0);
+  font: 400 1.25rem "Poppins", sans-serif;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  align-self: flex-start;
+  border-radius: 8px;
+  border: none;
+  background: var(--cor-1);
+}
+
+.img-send {
+  display: inline-block;
+}
+.button-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--cor-0);
+  color: rgba(46, 2, 73, 0.3);
+  border: solid 2px rgba(46, 2, 73, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button-checkbox:checked + .button-label {
+  background-color: var(--cor-1);
+  color: var(--cor-0);
+}
+
+form .flex-column {
+  align-content: space-between;
+}
+textarea {
+  resize: none;
+}
