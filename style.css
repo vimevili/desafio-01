@@ -29,7 +29,32 @@ main {
   border-radius: 24px;
   grid-template-columns: 1fr;
 }
-
+.error {
+  margin: 0;
+  position: absolute;
+  display: none;
+  font-size: 0.75rem;
+  color: red;
+}
+.error-input {
+  border-bottom: 3px solid red;
+}
+.erro-name {
+  top: 393px;
+}
+.erro-email {
+  top: 485px;
+}
+.erro-message {
+  top: 595px;
+}
+.erro-check {
+  top: 135px;
+}
+.button-checkbox,
+.checkbox {
+  position: relative;
+}
 /* container */
 .container-1fr {
   display: grid;
@@ -55,6 +80,7 @@ main {
   gap: 16px;
   margin-bottom: 64px;
 }
+
 .flex-column {
   box-sizing: border-box;
   display: flex;
@@ -82,7 +108,7 @@ aside .container-flex {
 .contact-list li:hover {
   background: rgba(87, 10, 87, 0.5);
   padding: 12px 24px;
-  border: 3px solid #a91079;
+  border: 3px solid var(--cor-1);
   border-radius: 16px;
 }
 
@@ -189,6 +215,12 @@ aside .container-flex {
   border-radius: 8px;
   border: none;
   background: var(--cor-1);
+  cursor: pointer;
+}
+
+#send-button:disabled {
+  background: var(--cor-2);
+  cursor: auto;
 }
 
 .img-send {

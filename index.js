@@ -1,49 +1,92 @@
-let inputNome = document.getElementById("name");
-let inputEmail = document.getElementById("email");
-let inputMessage = document.getElementById("message");
-const button = document.getElementById("send-button");
-const inputs = document.querySelectorAll("#name", "#email", "#message");
+const form = document.querySelector("#myForm");
+const spans = document.querySelectorAll(".error");
+const button = document.querySelector("#send-button");
+const inputs = document.querySelectorAll(".inputs");
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+const nome = document.querySelector("#name");
+const email = document.querySelector("#email");
+const mensagem = document.querySelector("#message");
+
+inputs[0].addEventListener("input", validaNome);
+inputs[1].addEventListener("input", validaEmail);
+inputs[2].addEventListener("input", validaMessage);
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (validaButton()) {
+    alert("Formulário enviado com sucesso!");
+    formulario.reset();
+  }
+});
+
+function validaCheckbox() {
+  let checkedCount = 0;
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkedCount++;
+    }
+  });
+
+  if (checkedCount === 0) {
+    spans[0].style.display = "block";
+    return false;
+  }
+  spans[0].style.display = "none";
+  return true;
+}
 
 function validaNome() {
   const namePattern = /^[A-Za-z]+\s[A-Za-z]+$/;
-  if (!namePattern.test(inputNome.value)) {
-    alert("Por favor, insira um nome com pelo menos duas palavras.");
+  if (!namePattern.test(nome.value)) {
+    mostraErro(0);
+  } else {
+    removerErro(0);
+    return true;
   }
-  inputNome = inputNome.value;
-  return true;
 }
 
 function validaEmail() {
   const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  if (!emailPattern.test(inputEmail.value)) {
-    alert("Por favor, insira um e-mail válido.");
+  if (!emailPattern.test(email.value)) {
+    mostraErro(1);
+  } else {
+    removerErro(1);
+    return true;
   }
-  inputEmail = inputEmail.value;
-  return true;
 }
 
 function validaMessage() {
-  if (inputMessage.value === "") {
-    alert("Por favor, insira sua mensagem.");
+  if (mensagem.value.length < 20) {
+    mostraErro(2);
+  } else {
+    removerErro(2);
+    return true;
   }
-  inputMessage = inputMessage.value;
-  return true;
 }
 
 function validaButton() {
-  if (validaNome() && validaEmail() && validaMessage()) {
+  const checkboxValido = validaCheckbox();
+  const nomeValido = validaNome();
+  const emailValido = validaEmail();
+  const mensagemValida = validaMessage();
+
+  const isValid = checkboxValido && nomeValido && emailValido && mensagemValida;
+
+  if (isValid) {
     button.disabled = false;
   } else {
     button.disabled = true;
   }
+  return isValid;
 }
 
-for (let i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener("change", function () {
-    if (validaNome() && validaEmail() && validaMessage()) {
-      button.disabled = false;
-    } else {
-      button.disabled = true;
-    }
-  });
+function mostraErro(index) {
+  inputs[index].classList.add("error-input");
+  spans[index + 1].style.display = "block";
+}
+
+function removerErro(index) {
+  inputs[index].classList.remove("error-input");
+  spans[index + 1].style.display = "none";
 }

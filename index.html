@@ -51,7 +51,7 @@
 
       <main class="container-1fr">
         <h2 class="subtitle">I'm interested in...</h2>
-        <div class="container-flex">
+        <div class="container-flex checkbox">
           <input
             type="checkbox"
             name="user-design"
@@ -94,33 +94,38 @@
           />
           <label for="other" class="button-label">Other</label>
         </div>
+        <span class="error erro-check">Selecione pelo menos uma opção</span>
 
-        <form class="flex-column myForm">
+        <form class="flex-column" id="myForm">
           <input
             type="input"
             id="name"
             name="name"
             placeholder="Your name"
-            required
-            class="input-text"
+            class="input-text inputs"
           />
+          <span class="error erro-name"
+            >Insira um nome com pelo menos duas palavras</span
+          >
 
           <input
             type="input"
             id="email"
             name="email"
             placeholder="Your email"
-            required
-            class="input-text"
+            class="input-text inputs"
           />
+          <span class="error erro-email">Insira um e-mail válido</span>
 
           <textarea
-            id="input"
+            id="message"
             name="message"
             placeholder="Your message"
-            required
-            class="input-text"
+            class="input-text inputs"
           ></textarea>
+          <span class="error erro-message"
+            >Sua mensagem deve ter pelo menos 20 caracteres</span
+          >
 
           <button type="submit" id="send-button" disabled>
             <img src="/images/send.svg" alt="" class="img-send" />Send Message
@@ -129,6 +134,6 @@
       </main>
     </div>
 
-    <script src="/index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
