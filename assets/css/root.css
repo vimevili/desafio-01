@@ -1,0 +1,112 @@
+.subtitle {
+  color: var(--cor-2);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.font-large {
+  font: 700 3rem "Poppins", sans-serif;
+}
+
+:root {
+  --cor-0: #ffffff;
+  --cor-1: #a91079;
+  --cor-2: #2e0249;
+}
+
+.cor-0 {
+  color: var(--cor-0);
+}
+
+.cor-1 {
+  color: var(--cor-1);
+}
+
+.cor-2 {
+  color: var(--cor-2);
+}
+
+/* atributos globais */
+
+body {
+  background-color: var(--cor-2);
+  margin: 0 auto;
+  font: 400 1.25rem "Poppins", sans-serif;
+  max-width: 1440px;
+  height: 100vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  max-width: 13ch;
+}
+
+main {
+  background: white;
+  padding: 48px;
+  border-radius: 24px;
+  grid-template-columns: 1fr;
+}
+
+/* containers */
+.container-1fr {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  align-content: space-between;
+}
+
+.container-2fr {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 64px;
+  gap: 48px;
+  max-width: 1440px;
+  height: 100vh;
+}
+
+.container-flex {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.flex-column {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 60px;
+}
+
+aside .container-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 0;
+  background-color: transparent;
+  transition: padding 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+form .flex-column {
+  align-content: space-between;
+}

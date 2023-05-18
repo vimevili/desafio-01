@@ -1,117 +1,56 @@
+"use strict";
 const form = document.querySelector("#myForm");
 const spans = document.querySelectorAll(".error");
 const button = document.querySelector("#send-button");
 const inputs = document.querySelectorAll(".inputs");
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
 const nome = document.querySelector("#name");
 const email = document.querySelector("#email");
 const mensagem = document.querySelector("#message");
-
-inputs[0].addEventListener("input", validaNome);
-inputs[1].addEventListener("input", validaEmail);
-inputs[2].addEventListener("input", validaMessage);
-
-// events
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  validaButton();
-  alert("Formulário enviado com sucesso!");
-  form.reset();
-});
-
-checkboxes.forEach(function (checkbox) {
-  checkbox.addEventListener("change", checkboxListener);
-});
-nome.addEventListener("input", nomeListener);
-email.addEventListener("input", emailListener);
-console.log(mensagem.addEventListener("input", messageListener));
-
-// funções de evento
-function checkboxListener() {
-  validaCheckbox();
-  validaButton();
-}
-
-function nomeListener() {
-  validaNome();
-  validaButton();
-}
-
-function emailListener() {
-  validaEmail();
-  validaButton();
-}
-
-function messageListener() {
-  validaMessage();
-  validaButton();
-}
-
 // funções de validação
-function validaCheckbox() {
-  let checkedCount = 0;
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      checkedCount++;
-    }
-    if (checkedCount === 0) {
-      spans[0].style.display = "block";
-      return false;
-    } else {
-      spans[0].style.display = "none";
-      return true;
-    }
-  });
-}
-
-function validaNome() {
-  const namePattern = /^[A-Za-z]+\s[A-Za-z]+$/;
-  if (!namePattern.test(nome.value)) {
-    mostraErro(0);
-    return false;
-  } else {
-    removerErro(0);
-    return true;
-  }
-}
-
-function validaEmail() {
-  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  if (!emailPattern.test(email.value)) {
-    mostraErro(1);
-    return false;
-  } else {
-    removerErro(1);
-    return true;
-  }
-}
-
-function validaMessage() {
-  if (mensagem.value.length < 20) {
-    mostraErro(2);
-    return false;
-  } else {
-    removerErro(2);
-    return true;
-  }
-}
-
 function validaButton() {
-  if (validaCheckbox() && validaNome() && validaEmail() && validaMessage()) {
-    button.removeAttribute("disabled");
-  } else {
-    button.setAttribute("disabled", true);
-  }
+    let checkboxesSelecionados = Array.from(checkboxes)
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => {
+        const sibling = checkbox.nextElementSibling;
+        return sibling ? sibling.textContent.trim() : "";
+    });
+    let checkboxValido = Array.from(checkboxes).some((checkbox) => checkbox.checked);
+    let nomeValido = /^[A-Za-z]+\s[A-Za-z]+$/.test(nome.value);
+    let emailValido = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email.value);
+    let mensagemValida = mensagem.value.trim().length > 20;
+    if (!checkboxValido) {
+        checkboxValido = false;
+    }
+    if (!nomeValido) {
+        nomeValido = false;
+    }
+    if (!emailValido) {
+        emailValido = false;
+    }
+    if (!mensagemValida) {
+        mensagemValida = false;
+    }
+    button.disabled = !(checkboxValido &&
+        nomeValido &&
+        emailValido &&
+        mensagemValida);
+    armazenaDados(checkboxesSelecionados, nome, email, mensagem);
 }
-
-// funções de erro
-function mostraErro(index) {
-  inputs[index].classList.add("error-input");
-  spans[index + 1].style.display = "block";
+function armazenaDados(arg1, arg2, arg3, arg4) {
+    const mensagemObj = {
+        checkbox: arg1,
+        nome: arg2.value,
+        email: arg3.value,
+        mensagem: arg4.value,
+    };
+    const mensagemJSON = JSON.stringify(mensagemObj);
+    localStorage.setItem("formData", mensagemJSON);
 }
-
-function removerErro(index) {
-  inputs[index].classList.remove("error-input");
-  spans[index + 1].style.display = "none";
-}
+// events
+checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener("change", validaButton);
+});
+nome.addEventListener("input", validaButton);
+email.addEventListener("input", validaButton);
+mensagem.addEventListener("input", validaButton);
