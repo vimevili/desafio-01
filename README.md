@@ -13,6 +13,7 @@
     <li>O campo de email deve ter um formato válido de acordo com expressões regulares.</li>
     <li>O campo de mensagem deve ter pelo menos 20 caracteres.</li>
     <li>Ao clicar no botão "Enviar Mensagem", as informações são armazenadas no localStorage no formato de objeto.</li>
+    <li>Após o envio, uma nova página é aberta com as informações armazenadas no localStorage.</li>
   </ul>
 
   <h2>Tecnologias Utilizadas</h2>
@@ -20,6 +21,7 @@
     <li>HTML</li>
     <li>CSS</li>
     <li>JavaScript</li>
+    <li>TypeScript</li>
   </ul>
 
   <h2>Como Executar</h2>
@@ -29,8 +31,6 @@
     <li>Abra o arquivo `index.html` no seu navegador web.</li>
   </ol>
 
-  <h2>Contribuição</h2>
-  <p>Contribuições são bem-vindas! Se você tiver sugestões, melhorias ou correções, sinta-se à vontade para abrir uma issue ou enviar um pull request.</p>
 </body>
 
 </html>
