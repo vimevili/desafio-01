@@ -5,14 +5,16 @@ const inputs = document.querySelectorAll(".inputs")!;
 const checkboxes = document.querySelectorAll(
   'input[type="checkbox"]'
 )! as NodeListOf<HTMLInputElement>;
+let mensagemJSON: string = "";
 
 const nome = document.querySelector("#name")! as HTMLInputElement;
 const email = document.querySelector("#email")! as HTMLInputElement;
 const mensagem = document.querySelector("#message")! as HTMLInputElement;
+let checkboxesSelecionados: string[] = [];
 
 // funções de validação
 function validaButton() {
-  let checkboxesSelecionados: string[] = Array.from(checkboxes)
+  checkboxesSelecionados = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => {
       const sibling = checkbox.nextElementSibling;
@@ -22,7 +24,7 @@ function validaButton() {
   let checkboxValido: boolean = Array.from(checkboxes).some(
     (checkbox) => checkbox.checked
   );
-  let nomeValido: boolean = /^[A-Za-z]+\s[A-Za-z]+$/.test(nome.value);
+  let nomeValido: boolean = /^\w+\s+\w+/.test(nome.value);
   let emailValido: boolean =
     /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email.value);
   let mensagemValida: boolean = mensagem.value.trim().length > 20;
@@ -59,12 +61,12 @@ function armazenaDados(
   arg4: HTMLInputElement
 ) {
   const mensagemObj = {
-    checkbox: arg1,
+    checkbox: arg1.toString,
     nome: arg2.value,
     email: arg3.value,
     mensagem: arg4.value,
   };
-  const mensagemJSON: string = JSON.stringify(mensagemObj);
+  mensagemJSON = JSON.stringify(mensagemObj);
   localStorage.setItem("formData", mensagemJSON);
 }
 
@@ -76,3 +78,7 @@ checkboxes.forEach(function (checkbox) {
 nome.addEventListener("input", validaButton);
 email.addEventListener("input", validaButton);
 mensagem.addEventListener("input", validaButton);
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  window.location.href = "/assets/index2.html";
+});

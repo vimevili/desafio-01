@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Informações do Formulário</title>
+  </head>
+  <body>
+    <h1>Informações do Formulário</h1>
+    <div id="dataContainer"></div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        const dataContainer = document.querySelector("#dataContainer");
+        const dados = JSON.parse(localStorage.getItem("formData"));
+
+        if (dados) {
+          const nomeSalvo = document.createElement("p");
+          nomeSalvo.textContent = "Nome: " + dados.nome;
+          dataContainer.appendChild(nomeSalvo);
+
+          const emailSalvo = document.createElement("p");
+          emailSalvo.textContent = "Email: " + dados.email;
+          dataContainer.appendChild(emailSalvo);
+
+          const mensagemSalva = document.createElement("p");
+          mensagemSalva.textContent = "Mensagem: " + dados.mensagem;
+          dataContainer.appendChild(mensagemSalva);
+
+          const checkboxesSalvas = document.createElement("p");
+          checkboxesSalvas.textContent =
+            "Opções selecionadas: " + dados.checkboxesSelecionados;
+          dataContainer.appendChild(checkboxesSalvas);
+        } else {
+          const noDataElement = document.createElement("p");
+          noDataElement.textContent = "Nenhum dado salvo.";
+          dataContainer.appendChild(noDataElement);
+        }
+        console.log(dados);
+      });
+    </script>
+  </body>
+</html>

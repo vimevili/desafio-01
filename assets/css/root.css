@@ -110,3 +110,44 @@ aside .container-flex {
 form .flex-column {
   align-content: space-between;
 }
+
+@media (max-width: 599px) {
+  body {
+    font-size: 1.5rem;
+    height: 920px;
+    padding-bottom: 2.25rem;
+  }
+  .container-2fr {
+    grid-template-columns: 1fr;
+    padding: 2.25rem;
+    gap: 1.5rem;
+    max-width: 600px;
+  }
+  .container-flex {
+    justify-self: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.25rem;
+  }
+  .flex-column {
+    gap: 2.25rem;
+  }
+  .font-large {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+  h1 {
+    max-width: 20ch;
+    margin-bottom: 2rem;
+  }
+  .subtitle {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  main {
+    padding: 2rem;
+  }
+  a {
+    font-size: 1rem;
+  }
+}

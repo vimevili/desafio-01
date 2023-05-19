@@ -36,3 +36,20 @@
   border-radius: 50%;
   z-index: -1;
 }
+
+@media (max-width: 599px) {
+  .contact-list {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  aside .container-flex {
+    margin-bottom: 0px;
+    justify-content: start;
+  }
+
+  .contact-list li:hover {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+}
