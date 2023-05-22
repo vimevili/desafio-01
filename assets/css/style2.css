@@ -1,0 +1,73 @@
+:root {
+  --cor-0: #ffffff;
+  --cor-1: #a91079;
+  --cor-2: #2e0249;
+}
+
+.cor-0 {
+  color: var(--cor-0);
+}
+
+.cor-1 {
+  color: var(--cor-1);
+}
+
+.cor-2 {
+  color: var(--cor-2);
+}
+
+body {
+  display: grid;
+  gap: 2rem;
+  background-color: var(--cor-2);
+  color: var(--cor-3);
+  font: 400 1.5rem "Poppins", sans-serif;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+#dataContainer {
+  background-color: var(--cor-0);
+  padding: 24px;
+  border-radius: 8px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  max-width: fit-content;
+  height: fit-content;
+  line-height: 3rem;
+  box-shadow: 1px 3px 8px rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+  margin-top: 60px;
+  color: var(--cor-0);
+  font-size: 3rem;
+  text-align: center;
+}
+
+span {
+  font-weight: 700;
+  columns: var(--cor-0);
+}
+
+button {
+  padding: 16px 32px;
+  align-items: center;
+  justify-self: center;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: var(--cor-2);
+  box-shadow: 1px 2px 8px rgba(255, 255, 255, 0.1);
+  background: var(--cor-1);
+  cursor: pointer;
+  grid-row: 3;
+  height: fit-content;
+}
+
+a {
+  text-decoration: none;
+  color: var(--cor-0);
+  font: 400 1.25rem "Poppins", sans-serif;
+}

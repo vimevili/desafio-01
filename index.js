@@ -1,21 +1,19 @@
 "use strict";
 const form = document.querySelector("#myForm");
-const spans = document.querySelectorAll(".error");
 const button = document.querySelector("#send-button");
 const inputs = document.querySelectorAll(".inputs");
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let mensagemJSON = "";
 const nome = document.querySelector("#name");
 const email = document.querySelector("#email");
 const mensagem = document.querySelector("#message");
-let checkboxesSelecionados = [];
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+var checkboxesSelecionados = new Set();
 // funções de validação
 function validaButton() {
-    checkboxesSelecionados = Array.from(checkboxes)
-        .filter((checkbox) => checkbox.checked)
-        .map((checkbox) => {
-        const sibling = checkbox.nextElementSibling;
-        return sibling ? sibling.textContent.trim() : "";
+    checkboxes.forEach((elemento) => {
+        if (elemento.checked) {
+            checkboxesSelecionados.add(elemento.value);
+        }
     });
     let checkboxValido = Array.from(checkboxes).some((checkbox) => checkbox.checked);
     let nomeValido = /^\w+\s+\w+/.test(nome.value);
@@ -37,11 +35,11 @@ function validaButton() {
         nomeValido &&
         emailValido &&
         mensagemValida);
-    armazenaDados(checkboxesSelecionados, nome, email, mensagem);
+    return true;
 }
 function armazenaDados(arg1, arg2, arg3, arg4) {
     const mensagemObj = {
-        checkbox: arg1.toString,
+        checkboxes: arg1,
         nome: arg2.value,
         email: arg3.value,
         mensagem: arg4.value,
@@ -58,5 +56,9 @@ email.addEventListener("input", validaButton);
 mensagem.addEventListener("input", validaButton);
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    window.location.href = "/assets/index2.html";
+    const checkboxesArray = Array.from(checkboxesSelecionados);
+    if (validaButton()) {
+        armazenaDados(checkboxesArray, nome, email, mensagem);
+        window.location.href = "/assets/index2.html";
+    }
 });

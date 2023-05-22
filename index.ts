@@ -1,26 +1,23 @@
 const form = document.querySelector("#myForm")! as HTMLFormElement;
-const spans = document.querySelectorAll(".error")!;
 const button = document.querySelector("#send-button")! as HTMLButtonElement;
 const inputs = document.querySelectorAll(".inputs")!;
-const checkboxes = document.querySelectorAll(
-  'input[type="checkbox"]'
-)! as NodeListOf<HTMLInputElement>;
 let mensagemJSON: string = "";
 
 const nome = document.querySelector("#name")! as HTMLInputElement;
 const email = document.querySelector("#email")! as HTMLInputElement;
 const mensagem = document.querySelector("#message")! as HTMLInputElement;
-let checkboxesSelecionados: string[] = [];
+const checkboxes = document.querySelectorAll(
+  'input[type="checkbox"]'
+)! as NodeListOf<HTMLInputElement>;
+var checkboxesSelecionados: Set<string> = new Set<string>();
 
 // funções de validação
 function validaButton() {
-  checkboxesSelecionados = Array.from(checkboxes)
-    .filter((checkbox) => checkbox.checked)
-    .map((checkbox) => {
-      const sibling = checkbox.nextElementSibling;
-      return sibling ? sibling.textContent!.trim() : "";
-    });
-
+  checkboxes.forEach((elemento: HTMLInputElement) => {
+    if (elemento.checked) {
+      checkboxesSelecionados.add(elemento.value);
+    }
+  });
   let checkboxValido: boolean = Array.from(checkboxes).some(
     (checkbox) => checkbox.checked
   );
@@ -51,7 +48,7 @@ function validaButton() {
     emailValido &&
     mensagemValida
   );
-  armazenaDados(checkboxesSelecionados, nome, email, mensagem);
+  return true;
 }
 
 function armazenaDados(
@@ -61,7 +58,7 @@ function armazenaDados(
   arg4: HTMLInputElement
 ) {
   const mensagemObj = {
-    checkbox: arg1.toString,
+    checkboxes: arg1,
     nome: arg2.value,
     email: arg3.value,
     mensagem: arg4.value,
@@ -69,7 +66,6 @@ function armazenaDados(
   mensagemJSON = JSON.stringify(mensagemObj);
   localStorage.setItem("formData", mensagemJSON);
 }
-
 // events
 
 checkboxes.forEach(function (checkbox) {
@@ -78,7 +74,13 @@ checkboxes.forEach(function (checkbox) {
 nome.addEventListener("input", validaButton);
 email.addEventListener("input", validaButton);
 mensagem.addEventListener("input", validaButton);
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  window.location.href = "/assets/index2.html";
+  const checkboxesArray: string[] = Array.from(checkboxesSelecionados);
+
+  if (validaButton()) {
+    armazenaDados(checkboxesArray, nome, email, mensagem);
+    window.location.href = "/assets/index2.html";
+  }
 });

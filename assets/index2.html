@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>Informações do Formulário</title>
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/style2.css" />
   </head>
   <body>
     <h1>Informações do Formulário</h1>
+    <button><a href="/assets/index.html">Voltar</a></button>
     <div id="dataContainer"></div>
 
     <script>
@@ -14,27 +17,26 @@
 
         if (dados) {
           const nomeSalvo = document.createElement("p");
-          nomeSalvo.textContent = "Nome: " + dados.nome;
+          nomeSalvo.innerHTML = "<span>Nome:</span> " + dados.nome;
           dataContainer.appendChild(nomeSalvo);
 
           const emailSalvo = document.createElement("p");
-          emailSalvo.textContent = "Email: " + dados.email;
+          emailSalvo.innerHTML = "<span>Email: </span>" + dados.email;
           dataContainer.appendChild(emailSalvo);
 
           const mensagemSalva = document.createElement("p");
-          mensagemSalva.textContent = "Mensagem: " + dados.mensagem;
+          mensagemSalva.innerHTML = "<span>Mensagem: </span>" + dados.mensagem;
           dataContainer.appendChild(mensagemSalva);
 
           const checkboxesSalvas = document.createElement("p");
-          checkboxesSalvas.textContent =
-            "Opções selecionadas: " + dados.checkboxesSelecionados;
+          checkboxesSalvas.innerHTML =
+            "<span>Opções selecionadas: </span>" + dados.checkboxes.join(", ");
           dataContainer.appendChild(checkboxesSalvas);
         } else {
           const noDataElement = document.createElement("p");
-          noDataElement.textContent = "Nenhum dado salvo.";
+          noDataElement.innerHTML = "Nenhum dado salvo.";
           dataContainer.appendChild(noDataElement);
         }
-        console.log(dados);
       });
     </script>
   </body>
