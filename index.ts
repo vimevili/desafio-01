@@ -12,7 +12,7 @@ const checkboxes = document.querySelectorAll(
 var checkboxesSelecionados: Set<string> = new Set<string>();
 
 // funções de validação
-function validaButton() {
+function validaCheckbox(): boolean {
   checkboxes.forEach((elemento: HTMLInputElement) => {
     if (elemento.checked) {
       checkboxesSelecionados.add(elemento.value);
@@ -21,26 +21,39 @@ function validaButton() {
   let checkboxValido: boolean = Array.from(checkboxes).some(
     (checkbox) => checkbox.checked
   );
-  let nomeValido: boolean = /^\w+\s+\w+/.test(nome.value);
-  let emailValido: boolean =
-    /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email.value);
-  let mensagemValida: boolean = mensagem.value.trim().length > 20;
-
   if (!checkboxValido) {
     checkboxValido = false;
   }
-
+  return checkboxValido;
+}
+function validaNome(): boolean {
+  let nomeValido: boolean = /^\w+\s+\w+/.test(nome.value);
   if (!nomeValido) {
     nomeValido = false;
   }
-
+  return nomeValido;
+}
+function validaEmail(): boolean {
+  let emailValido: boolean =
+    /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email.value);
   if (!emailValido) {
     emailValido = false;
   }
-
+  return emailValido;
+}
+function validaMensagem(): boolean {
+  let mensagemValida: boolean = mensagem.value.trim().length > 20;
   if (!mensagemValida) {
     mensagemValida = false;
   }
+  return mensagemValida;
+}
+
+function validaButton() {
+  let checkboxValido = validaCheckbox();
+  let nomeValido = validaNome();
+  let emailValido = validaCheckbox();
+  let mensagemValida = validaMensagem();
 
   button.disabled = !(
     checkboxValido &&
