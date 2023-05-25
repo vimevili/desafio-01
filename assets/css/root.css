@@ -1,7 +1,7 @@
 .subtitle {
   color: var(--cor-2);
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .font-large {
   font: 700 3rem "Poppins", sans-serif;
@@ -31,7 +31,7 @@ body {
   background-color: var(--cor-2);
   margin: 0 auto;
   font: 400 1.25rem "Poppins", sans-serif;
-  max-width: 1440px;
+  max-width: 90rem;
   height: 100vh;
   box-sizing: border-box;
   align-items: center;
@@ -53,8 +53,8 @@ h1 {
 
 main {
   background: white;
-  padding: 48px;
-  border-radius: 24px;
+  padding: 3rem;
+  border-radius: 1.5rem;
   grid-template-columns: 1fr;
 }
 
@@ -70,9 +70,9 @@ main {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 64px;
-  gap: 48px;
-  max-width: 1440px;
+  padding: 4rem;
+  gap: 3rem;
+  max-width: 90rem;
   height: 100vh;
 }
 
@@ -80,8 +80,8 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 64px;
+  gap: 1rem;
+  margin-bottom: 4rem;
 }
 
 .flex-column {
@@ -89,13 +89,13 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 60px;
+  gap: 3.75rem;
 }
 
 aside .container-flex {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   padding: 0;
   background-color: transparent;
   transition: padding 0.3s, background-color 0.3s;
@@ -111,17 +111,17 @@ form .flex-column {
   align-content: space-between;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 37.4375rem) {
   body {
     font-size: 1.5rem;
-    height: 920px;
+    height: 57.5rem;
     padding-bottom: 2.25rem;
   }
   .container-2fr {
     grid-template-columns: 1fr;
     padding: 2.25rem;
     gap: 1.5rem;
-    max-width: 600px;
+    max-width: 37.5rem;
   }
   .container-flex {
     justify-self: center;
