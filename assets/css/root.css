@@ -33,7 +33,6 @@ body {
   font: 400 1.25rem "Poppins", sans-serif;
   max-width: 90rem;
   height: 100vh;
-  box-sizing: border-box;
   align-items: center;
   justify-content: center;
 }
@@ -62,12 +61,10 @@ main {
 .container-1fr {
   display: grid;
   grid-template-columns: 1fr;
-  box-sizing: border-box;
   align-content: space-between;
 }
 
 .container-2fr {
-  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 4rem;
@@ -85,7 +82,6 @@ main {
 }
 
 .flex-column {
-  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -99,7 +95,6 @@ aside .container-flex {
   padding: 0;
   background-color: transparent;
   transition: padding 0.3s, background-color 0.3s;
-  box-sizing: border-box;
 }
 
 .flex-column {
