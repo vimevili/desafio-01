@@ -44,6 +44,8 @@ img {
 
 a {
   text-decoration: none;
+  color: var(--cor-0);
+  
 }
 
 h1 {
@@ -55,6 +57,28 @@ main {
   padding: 3rem;
   border-radius: 1.5rem;
   grid-template-columns: 1fr;
+}
+
+span {
+  display: none; 
+  color: red;
+  position: absolute;
+  font-size: .85rem;
+}
+input {
+  position: relative;
+}
+.span-checkbox {
+  top: 290px;
+  }
+.span-name {
+top: 25rem;
+}
+.span-email {
+top: 31.875rem;
+}
+.span-message {
+top: 38.75rem;
 }
 
 /* containers */

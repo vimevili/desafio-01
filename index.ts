@@ -1,15 +1,15 @@
 const form = document.querySelector("#myForm")! as HTMLFormElement;
 const button = document.querySelector("#send-button")! as HTMLButtonElement;
 const inputs = document.querySelectorAll(".inputs")!;
-let mensagemJSON: string = "";
-
+const spans = document.querySelectorAll('span')
 const nome = document.querySelector("#name")! as HTMLInputElement;
 const email = document.querySelector("#email")! as HTMLInputElement;
 const mensagem = document.querySelector("#message")! as HTMLInputElement;
 const checkboxes = document.querySelectorAll(
   'input[type="checkbox"]'
-)! as NodeListOf<HTMLInputElement>;
+  )! as NodeListOf<HTMLInputElement>;
 var checkboxesSelecionados: Set<string> = new Set<string>();
+let mensagemJSON: string = "";
 
 // funções de validação
 function validaCheckbox(): boolean {
@@ -70,11 +70,24 @@ function armazenaDados(
 
 // events
 checkboxes.forEach(function (checkbox) {
-  checkbox.addEventListener("change", validaButton);
+  checkbox.addEventListener("change", () => {
+  !validaCheckbox() ? mostraErro(1) : removeErro(1)
+  validaButton();
+})});
+nome.addEventListener("input", () => {
+  !validaNome() ? mostraErro(2) : removeErro(2)
+  validaButton()
 });
-nome.addEventListener("input", validaButton);
-email.addEventListener("input", validaButton);
-mensagem.addEventListener("input", validaButton);
+
+email.addEventListener("input", () => {
+  !validaEmail() ? mostraErro(3) : removeErro(3)
+  validaButton();
+  });
+
+mensagem.addEventListener("input", () => {
+  !validaMensagem() ? mostraErro(4) : removeErro(4)
+  validaButton()
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -85,3 +98,10 @@ form.addEventListener("submit", (event) => {
     window.location.href = "/assets/formData.html";
   }
 });
+
+function mostraErro(index: number) {
+  spans[index].style.display = 'inline-block';
+}
+function removeErro(index: number) {
+  spans[index].style.display = 'none';
+}
