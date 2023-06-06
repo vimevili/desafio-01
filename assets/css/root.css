@@ -69,7 +69,7 @@ input {
   position: relative;
 }
 .span-checkbox {
-  top: 290px;
+  top: 18.125rem;
   }
 .span-name {
 top: 25rem;
@@ -211,5 +211,43 @@ form .flex-column {
   .subtitle {
     font-size: 1.15rem;
     text-align: center;
+  }
+  .span-checkbox {
+    top: 655px;
+    }
+  .span-name {
+  top: 728px;
+  }
+  .span-email {
+  top: 798px;
+  }
+  .span-message {
+  top: 865px;
+  }
+}
+
+@media (max-width: 330px) {
+  .font-large {
+    font-size: 2.25rem;
+}
+a{
+  font-size: 1rem;
+
+}
+  .container-flex {
+    gap: .5rem;
+    margin-bottom: 2rem;
+  }
+  .span-checkbox {
+    top: 510px;
+    }
+  .span-name {
+  top: 750px;
+  }
+  .span-email {
+  top: 815px;
+  }
+  .span-message {
+  top: 885px;
   }
 }
