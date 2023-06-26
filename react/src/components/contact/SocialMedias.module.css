@@ -1,0 +1,43 @@
+.mediasContainer {
+  display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.625rem;
+    padding: 0;
+    background-color: transparent;
+    transition: padding 0.3s, background-color 0.3s;
+    gap: 2.75rem;
+    padding: 0;
+    margin: 0;
+}
+
+.mediaItem {
+  position: relative;
+  display: inline-block;
+}
+
+.mediaItem a {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+}
+
+.mediaItem a img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mediaItem:hover > a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  background: #a91079;
+  border-radius: 50%;
+  z-index: -1;
+}

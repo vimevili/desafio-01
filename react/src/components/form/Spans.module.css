@@ -1,0 +1,20 @@
+span {
+  display: none; 
+    color: red;
+    position: absolute;
+    font-size: .85rem;
+}
+
+.spanName {
+  top: 38.5rem;
+  right: 40rem;
+}
+.spanEmail {
+  top: 45rem;
+  right: 47.6rem;
+
+}
+.spanMessage {
+  top: 51.5rem;
+  right: 36rem;
+}

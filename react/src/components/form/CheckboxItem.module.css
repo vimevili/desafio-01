@@ -1,0 +1,18 @@
+.checkboxItem {
+  display: none;
+}
+
+.label {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: #fff;
+  color: rgba(46, 2, 73, 0.3);
+  border: solid 0.125rem rgba(46, 2, 73, 0.3);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.checkboxItem:checked + .label {
+  background-color: #a91079;
+  color: #fff;
+}

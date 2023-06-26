@@ -1,0 +1,13 @@
+.checkboxesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.subtitle {
+    color: #2e0249;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+

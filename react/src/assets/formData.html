@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Informações do Formulário</title>
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/styleFormData.css" />
+</head>
+
+<body>
+  <h1>Informações do Formulário</h1>
+  <button><a href="/index.html">Voltar</a></button>
+  <div id="dataContainer"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const dataContainer = document.querySelector("#dataContainer");
+      const dados = JSON.parse(localStorage.getItem("formData"));
+
+      if (dados) {
+        const nomeSalvo = document.createElement("p");
+        nomeSalvo.innerHTML = "<span>Nome:</span> " + dados.nome;
+        dataContainer.appendChild(nomeSalvo);
+
+        const emailSalvo = document.createElement("p");
+        emailSalvo.innerHTML = "<span>Email: </span>" + dados.email;
+        dataContainer.appendChild(emailSalvo);
+
+        const mensagemSalva = document.createElement("p");
+        mensagemSalva.innerHTML = "<span>Mensagem: </span>" + dados.mensagem;
+        dataContainer.appendChild(mensagemSalva);
+
+        const checkboxesSalvas = document.createElement("p");
+        checkboxesSalvas.innerHTML =
+          "<span>Opções selecionadas: </span>" + dados.checkboxes.join(", ");
+        dataContainer.appendChild(checkboxesSalvas);
+      } else {
+        const noDataElement = document.createElement("p");
+        noDataElement.innerHTML = "Nenhum dado salvo.";
+        dataContainer.appendChild(noDataElement);
+      }
+    });
+  </script>
+</body>
+
+</html>

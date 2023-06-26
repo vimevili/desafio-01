@@ -1,0 +1,26 @@
+.input {
+  padding: 0.5rem;
+  background-color:var(--cor-0);
+  color: rgba(46, 2, 73, 0.3);
+  border: none;
+  border-bottom: solid rgba(46, 2, 73, 0.3);
+  font: 400 1.25rem "Poppins", sans-serif;
+  width: 100%;
+  position: relative;
+}
+.input:focus {
+  color: var(--cor-2);
+  outline: none;
+  border-bottom: solid var(--cor-1);
+  caret-color: var(--cor-2);
+}
+
+.input::placeholder {
+  color: rgba(46, 2, 73, 0.3);
+  font: 400 1.25rem "Poppins", sans-serif;
+}
+
+.input:focus::placeholder {
+  color: var(--cor-2);
+  font-weight: 500;
+}
